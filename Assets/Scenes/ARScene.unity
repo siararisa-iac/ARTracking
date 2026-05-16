@@ -347,7 +347,7 @@ MonoBehaviour:
       m_Calls: []
   m_SerializedLibrary: {fileID: 11400000, guid: 17f29591bd084dc40a78afb2a97929ad, type: 2}
   m_MaxNumberOfMovingImages: 1
-  m_TrackedImagePrefab: {fileID: 2159117000730916740, guid: bc2c8e81c41fe584bb9442b1aa71a3a1, type: 3}
+  m_TrackedImagePrefab: {fileID: 0}
 --- !u!114 &591953221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,10 +362,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ARTrackingManager
   _trackedImageManager: {fileID: 591953220}
   _trackedImageDatas:
-  - ImageReferenceName: iacademy_logo
+  - ImageReferenceName: image_1
     PrefabToSpawn: {fileID: 2159117000730916740, guid: bc2c8e81c41fe584bb9442b1aa71a3a1, type: 3}
   - ImageReferenceName: image_2
     PrefabToSpawn: {fileID: 2159117000730916740, guid: 232cdec90a4265740a0e9b548f136644, type: 3}
+  - ImageReferenceName: image_3
+    PrefabToSpawn: {fileID: 2159117000730916740, guid: 7feba6ac489595545971994650da0914, type: 3}
 --- !u!1 &631040436
 GameObject:
   m_ObjectHideFlags: 0

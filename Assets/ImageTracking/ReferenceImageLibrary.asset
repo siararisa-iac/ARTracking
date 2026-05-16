@@ -25,25 +25,25 @@ MonoBehaviour:
       m_GuidHigh: 13056188278320625723
     m_Size: {x: 0.05953125, y: 0.05953125}
     m_SpecifySize: 1
-    m_Name: iacademy_logo
+    m_Name: image_1
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 5208932777883692635
       m_GuidHigh: 5369220072346118314
     m_SerializedTextureGuid:
-      m_GuidLow: 0
-      m_GuidHigh: 0
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+      m_GuidLow: 2897177429739506248
+      m_GuidHigh: 13652157596948965449
+    m_Size: {x: 0.18335626, y: 0.22489583}
+    m_SpecifySize: 1
     m_Name: image_2
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 5414116479784489688
       m_GuidHigh: 3303287473407163569
     m_SerializedTextureGuid:
-      m_GuidLow: 0
-      m_GuidHigh: 0
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+      m_GuidLow: 12093340539106098798
+      m_GuidHigh: 12384697182739141003
+    m_Size: {x: 0.05953125, y: 0.05953125}
+    m_SpecifySize: 1
     m_Name: image_3
     m_Texture: {fileID: 0}

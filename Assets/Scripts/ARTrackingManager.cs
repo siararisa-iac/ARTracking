@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
@@ -28,17 +27,17 @@ public class ARTrackingManager : MonoBehaviour
 
     private void OnTrackedImagesChanged(ARTrackablesChangedEventArgs<ARTrackedImage> eventArgs)
     {
-        foreach(var trackedImage in eventArgs.added)
+        foreach (var trackedImage in eventArgs.added)
         {
             HandleTrackImage(trackedImage);
         }
 
-        foreach(var trackedImage in eventArgs.updated)
+        foreach (var trackedImage in eventArgs.updated)
         {
             HandleTrackImage(trackedImage);
         }
 
-        foreach(var trackedImage in eventArgs.removed)
+        foreach (var trackedImage in eventArgs.removed)
         {
             RemoveTrackImage(trackedImage);
         }
@@ -67,10 +66,10 @@ public class ARTrackingManager : MonoBehaviour
         // Check the status of the tracked image
 
         // If the Image is NOT being tracked
-        if(trackedState != TrackingState.Tracking)
+        if (trackedState != TrackingState.Tracking)
         {
             // Check if the collection has the image with the name of the current ARTrackedImage existing
-            if(_spawnedTrackables.TryGetValue(trackedImageName, out var existingGameObject))
+            if (_spawnedTrackables.TryGetValue(trackedImageName, out var existingGameObject))
             {
                 // Disable the specific gameObject not being tracked
                 existingGameObject.SetActive(false);
@@ -81,7 +80,7 @@ public class ARTrackingManager : MonoBehaviour
         // The Image is being tracked at this point
 
         // Check if the spawned object is/was tracked previously
-        if(_spawnedTrackables.TryGetValue(trackedImageName, out var trackedGameObject))
+        if (_spawnedTrackables.TryGetValue(trackedImageName, out var trackedGameObject))
         {
             // Enable the GameObject
             trackedGameObject.SetActive(true);
@@ -107,9 +106,9 @@ public class ARTrackingManager : MonoBehaviour
     // Returns the spawn prefab based on the defined imageName
     private GameObject GetSpawnPrefabFromData(string imageName)
     {
-        foreach(var data in _trackedImageDatas)
+        foreach (var data in _trackedImageDatas)
         {
-            if(data.ImageReferenceName == imageName)
+            if (data.ImageReferenceName == imageName)
             {
                 return data.PrefabToSpawn;
             }
