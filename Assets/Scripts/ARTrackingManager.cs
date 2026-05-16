@@ -2,27 +2,70 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.InputSystem.EnhancedTouch;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
 public class ARTrackingManager : MonoBehaviour
 {
     [SerializeField]
     private ARTrackedImageManager _trackedImageManager;
 
+    [SerializeField]
+    private ARPlaneManager _planeManager;
+
+    [SerializeField]
+    private ARRaycastManager _raycastManager;
+
     // This stores the data of what string-prefab pair to instantiate
     [SerializeField]
     private List<ARTrackedImageData> _trackedImageDatas;
+
+    private List<ARRaycastHit> _raycastHits;
 
     // Tracks the trackables that were instantiated
     private readonly Dictionary<string, GameObject> _spawnedTrackables = new();
 
     private void OnEnable()
     {
+        EnhancedTouchSupport.Enable();
         _trackedImageManager.trackablesChanged.AddListener(OnTrackedImagesChanged);
     }
 
     private void OnDisable()
     {
+        EnhancedTouchSupport.Disable();
         _trackedImageManager.trackablesChanged.RemoveListener(OnTrackedImagesChanged);
+    }
+
+    private void Update()
+    {
+        // Check for any active touches in the screen
+        if (Touch.activeTouches.Count == 0)
+        {
+            // Do an early exit this frame because there's no interaction happening requiring touches
+            return;
+        }
+
+        // Store the information of the first active touch in the screen
+        var touch = Touch.activeTouches[0];
+
+        if(touch.phase != TouchPhase.Began)
+        {
+            // We only need to detect the first point of contact
+            return;
+        }
+
+        // We will check if the point in the screen that we touched actually has an ARPlane
+        if(_raycastManager.Raycast(
+            touch.screenPosition, // cast a ray from the position of the touch
+            _raycastHits, // store the data of whatever ARRaycastHit information we got
+            TrackableType.PlaneWithinPolygon)) // filter whatever trackable type we want
+        {
+            // If we hit a plane
+            // Do something
+        }
+                                             
     }
 
     private void OnTrackedImagesChanged(ARTrackablesChangedEventArgs<ARTrackedImage> eventArgs)
